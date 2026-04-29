@@ -29,7 +29,7 @@ spring:
 
   ai:
     mistralai:
-      api-key: RZ4fjUcS81JfN3jAGjClA0lzVqe9PDpc
+      api-key: YOYR_KEY
       chat:
         options:
           model: mistral-medium
