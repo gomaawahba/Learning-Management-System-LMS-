@@ -1,0 +1,2 @@
+ALTER TABLE ai_logs
+ADD COLUMN response TEXT;

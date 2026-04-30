@@ -1,0 +1,58 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  application:
+    name: learning-management-system
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:lmsdb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:123456}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  ai:
+    mistralai:
+      api-key: RZ4fjUcS81JfN3jAGjClA0lzVqe9PDpc
+      chat:
+        options:
+          model: mistral-medium
+          temperature: 0.7
+          max-tokens: 1000
+
+jwt:
+  secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+  expiration: 86400000
+  refresh-expiration: 604800000
+
+server:
+  port: 8080
+  error:
+    include-message: always
+
+logging:
+  level:
+    com.lms: DEBUG
+    org.springframework.security: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
